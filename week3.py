@@ -5,10 +5,21 @@ def print_time(func):
         start_time = time.time()
         result = func(*args)
         end_time = time.time() - start_time
-        print("경과시간 = ",end_time)
+        # print(f"경과시간 = {end_time}")
+        print(f"경과시간 = {end_time}\n{result}")
         return result
     return func_event
+""" 겪고 있는 문제점 """
+# 재귀 함수에 데코레이터 함수를 사용하면 어떻게 될까?
+# 나의 예상 : 재귀를 할 때마다 데코레이터 함수가 호출된다.  아니라면 한번만
+# 실제 출력 : 재귀를 할 때마다 데코레이터 함수가 호출 되는 것이 아니며 출력 값이 두번 나오는 의아한 결과 값이 나왔다.
 
+
+
+
+
+
+""" 문제의 규칙 찾기 """
 # 파스칼의 삼각형
 
 # n = 1  :         1
@@ -66,7 +77,7 @@ def pascal(n):
     elif n == 1:
         return [1]
     else:
-        temp_arr = solution(n - 1)
+        temp_arr = pascal(n - 1)
         """실행 로직"""
         # n = 4
         # temp_arr = solution(3)
@@ -130,8 +141,8 @@ while True:
 # solution(x)
 
 # 재귀 함수
-print(pascal(x))
-# pascal(x)
+# print(pascal(x))
+pascal(x)
 
 # x = 5000
 # 반복문 경과 시간 2.7514991760253906
