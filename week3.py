@@ -25,7 +25,9 @@
 # 문제  : 입력값 n이 주어졌을때, n 번째 파스칼의 삼각형 리스트를 구하시오.
 
 def solution(n):
-    if 3 > n :
+    if n < 1:
+        return []
+    elif n < 3 :
         return [1] if n == 1 else [1,1]
     index = 2
     temp_arr = [1,1]
