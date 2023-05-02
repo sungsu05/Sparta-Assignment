@@ -1,3 +1,5 @@
+import time
+
 # 파스칼의 삼각형
 
 # n = 1  :         1
@@ -26,7 +28,7 @@
 
 def solution(n):
     if n < 1:
-        return []
+        return "정확한 값을 입력해주세요."
     elif n < 3 :
         return [1] if n == 1 else [1,1]
     index = 2
@@ -50,7 +52,7 @@ def solution(n):
 
 def pascal(n):
     if n < 1:
-        return []
+        return "정확한 값을 입력해주세요."
     elif n == 1:
         return [1]
     else:
@@ -101,16 +103,23 @@ def pascal(n):
         return result
 
 # 반복문
-x = 7
+x = 5
+start = time.time()
 print(solution(x))
+solution(x)
+end = time.time() - start
+print("반복문 경과 시간",end)
 
 # 재귀 함수
-x = 7
+start = time.time()
 print(pascal(x))
+pascal(x)
+end = time.time() - start
+print("재귀 경과 시간",end)
 
-
-
-
+# x = 5000
+# 반복문 경과 시간 2.7514991760253906
+# 재귀 경과 시간 2.7203762531280518
 
 
 
