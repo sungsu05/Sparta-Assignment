@@ -1,4 +1,13 @@
 import time
+# 시간 측정 데코레이터 함수
+def print_time(func):
+    def func_event(*args):
+        start_time = time.time()
+        result = func(*args)
+        end_time = time.time() - start_time
+        print("경과시간 = ",end_time)
+        return result
+    return func_event
 
 # 파스칼의 삼각형
 
@@ -26,6 +35,7 @@ import time
 
 # 문제  : 입력값 n이 주어졌을때, n 번째 파스칼의 삼각형 리스트를 구하시오.
 
+@print_time
 def solution(n):
     if n < 1:
         return "정확한 값을 입력해주세요."
@@ -49,7 +59,7 @@ def solution(n):
 
 
 ## 코드 발전, 재귀 함수를 이용
-
+@print_time
 def pascal(n):
     if n < 1:
         return "정확한 값을 입력해주세요."
@@ -57,6 +67,7 @@ def pascal(n):
         return [1]
     else:
         temp_arr = solution(n - 1)
+        """실행 로직"""
         # n = 4
         # temp_arr = solution(3)
 
@@ -99,30 +110,29 @@ def pascal(n):
             """ 새로운 리스트 만들기 """
             # if i == 0 or i == n-1 :
             #     continue
+            # for 반복문의 시작값 1, 종료값을 n-1로 지정했으며,
+            # 초기값을 1*n의 리스트로 만들어 if문으로 검증할 필요 없음
+
             result[i] = temp_arr[i-1] + temp_arr[i]
         return result
 
+while True:
+    try:
+        x = int(input())
+        break
+    except TypeError:
+        print("정수형 숫자를 입력해주세요.")
+    except ValueError:
+        print("정수형 숫자를 입력해주세요.")
+
 # 반복문
-x = 5
-start = time.time()
-print(solution(x))
-solution(x)
-end = time.time() - start
-print("반복문 경과 시간",end)
+# print(solution(x))
+# solution(x)
 
 # 재귀 함수
-start = time.time()
 print(pascal(x))
-pascal(x)
-end = time.time() - start
-print("재귀 경과 시간",end)
+# pascal(x)
 
 # x = 5000
 # 반복문 경과 시간 2.7514991760253906
 # 재귀 경과 시간 2.7203762531280518
-
-
-
-for i in range(0,1):
-    print(i)
-
